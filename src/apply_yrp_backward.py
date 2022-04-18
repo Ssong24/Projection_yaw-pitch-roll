@@ -32,6 +32,10 @@ def onDistZChange(val):
     global distZval
     distZval = val
 
+def create_meshgrid():
+    
+
+
 if __name__ == '__main__':
     print("current path: " ,os.getcwd())
 
@@ -92,6 +96,6 @@ if __name__ == '__main__':
         H = np.linalg.multi_dot([K, R, T, Kinv])
 
         # Apply matrix transformation
-        cv2.warpPerspective(src, H, (w, h), dst, cv2.INTER_LINEAR, cv2.BORDER_CONSTANT, 0)
+        cv2.warpPerspective(src, H, (w, h), dst, cv2.WARP_INVERSE_MAP, cv2.BORDER_CONSTANT, 0)
 
-        cv2.imwrite('images/after_' + str(i+1) + '.jpg', dst)
+        cv2.imwrite('images/backward_' + str(i+1) + '.jpg', dst)
